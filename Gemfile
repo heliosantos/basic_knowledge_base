@@ -4,6 +4,8 @@ gem 'rails', '3.2.13'
 gem "mongoid", "~> 3.1.4"
 gem "to_slug", "~> 1.0.8"
 
+gem "mongoid_search", "~> 0.3.2"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

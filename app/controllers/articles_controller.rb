@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+
+  def search
+    @articles = Article.full_text_search(params[:q], match: :all)
+  end
+
   # GET /articles
   # GET /articles.json
   def index

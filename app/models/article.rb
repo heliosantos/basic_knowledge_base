@@ -1,5 +1,6 @@
 class Article
   include Mongoid::Document
+  include Mongoid::Search
 
   field :title, type: String
   field :body, type: String
@@ -10,4 +11,7 @@ class Article
   def set_slug_as_id
     self.id = self.title.to_slug
   end
+
+  search_in :title, :body
+
 end
