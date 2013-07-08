@@ -1,14 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Bkb</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
-<body>
+  <title>Basic Knowledge Base</title>
+  </head>
 
-<%= yield %>
+  <body>
 
-</body>
+    <!-- Begin Wrapper -->
+    <div id="wrapper">
+
+      <!-- Begin Header -->
+      <div id="header">
+        Basic Knowledge Base
+      </div>
+      <!-- End Header -->
+
+      <!-- Begin Naviagtion -->
+      <div id="navigation">
+        <div class="search-box">
+          <%= form_tag("/search", method: "get") do %>
+            <%= text_field_tag :q, nil, class: 'search-field' %>
+            <%= submit_tag("Search") %>
+          <% end %>
+        </div>
+
+      </div>
+      <!-- End Naviagtion -->
+
+      <!-- Begin Content -->
+      <div id="content">
+
+        <%= yield %>
+
+      </div>
+      <!-- End Content -->
+
+      <!-- Begin Footer -->
+      <div id="footer">
+
+        2013
+
+      </div>
+      <!-- End Footer -->
+
+    </div>
+    <!-- End Wrapper -->
+
+  </body>
 </html>

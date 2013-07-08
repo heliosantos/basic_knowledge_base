@@ -1,0 +1,75 @@
+/*
+    
+
+    
+    Original version by Keith Donegan of Code-Sucks.com
+    
+    E-Mail: Keithdonegan@gmail.com
+    
+    You can do whatever you want with these layouts,
+    but it would be greatly appreciated if you gave a link
+    back to http://www.code-sucks.com
+    
+*/
+
+$header_background: #333333;
+$navigation_background: #999999;
+$footer_background: #999999;
+$content_background: #eeeeee;
+
+* { padding: 0; margin: 0; }
+
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 13px;
+}
+#wrapper { 
+ margin: 0 auto;
+ width: 922px;
+}
+#header {
+ width: 900px;
+ color: #fff;
+ padding: 10px;
+ border: 1px solid #ccc;
+ height: 20px;
+ margin: 10px 0px 5px 0px;
+ background: $header_background;
+
+ text-align: center;
+ font-size: 20px;
+ font-weight: bold;
+}
+#navigation {
+ width: 900px;
+ color: #333;
+ padding: 10px;
+ border: 1px solid #ccc;
+ margin: 0px 0px 5px 0px;
+ background: $navigation_background;
+}
+#content { 
+ width: 900px;
+ color: #333;
+ border: 1px solid #ccc;
+ background: $content_background;
+ margin: 0px 0px 5px 0px;
+ padding: 10px;
+ height: 350px;
+}
+#footer { 
+ width: 900px;
+ color: #333;
+ border: 1px solid #ccc;
+ background: $footer_background;
+ margin: 0px 0px 10px 0px;
+ padding: 10px;
+}
+
+.search-box {
+  text-align: center;
+}
+
+.search-field {
+  width: 500px;
+}
