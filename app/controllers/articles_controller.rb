@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   end
   
   def search
-    @articles = Article.full_text_search(params[:q], match: :all).map! do |article|
+    @articles = Article.full_text_search(params[:q], match: :all).map do |article|
       article.body = BlueCloth.new(article.body).to_html
       article
     end
@@ -25,7 +25,10 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.each
+    @articles = Article.each.map do |article|
+      article.body = BlueCloth.new(article.body).to_html
+      article
+    end
 
     respond_to do |format|
       format.html # index.html.erb
