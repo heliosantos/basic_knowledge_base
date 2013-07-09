@@ -1,7 +1,12 @@
 class ArticlesController < ApplicationController
 
+  # TODO: escape html on create and edit
+  
   def search
-    @articles = Article.full_text_search(params[:q], match: :all)
+    @articles = Article.full_text_search(params[:q], match: :all).map! do |article|
+      article.body = BlueCloth.new(article.body).to_html
+      article
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +31,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.json
   def show
     @article = Article.find(params[:id])
+    @article.body =  BlueCloth.new(@article.body).to_html
 
     respond_to do |format|
       format.html # show.html.erb

@@ -6,6 +6,8 @@ gem "to_slug", "~> 1.0.8"
 
 gem "mongoid_search", "~> 0.3.2"
 
+gem "bluecloth", "~> 2.2.0"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
