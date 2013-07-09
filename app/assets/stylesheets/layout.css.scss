@@ -59,10 +59,27 @@ body {
  padding: 10px;
 }
 
-.search-box {
+.navigation-search-box {
+  display: inline;
   text-align: center;
+
+  margin-left: 150px;
+  .search-field {
+    width: 500px;
+  }
+
 }
 
-.search-field {
-  width: 500px;
+
+
+
+.navigation-option {
+  display: inline;
+  float: right;
+  margin-left: 20px;
+  a {
+    text-decoration: none;
+    color: #533;
+    font-size: 16px;
+  }
 }

@@ -1,7 +1,7 @@
 Bkb::Application.routes.draw do
   resources :articles
   match '/search' => 'articles#search'
-  root :to => 'articles#search'
+  root :to => 'articles#welcome'
 
 
   # The priority is based upon order of creation:

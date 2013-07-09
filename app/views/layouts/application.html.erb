@@ -20,12 +20,20 @@
 
       <!-- Begin Naviagtion -->
       <div id="navigation">
-        <div class="search-box">
-          <%= form_tag("/search", method: "get") do %>
+        <%= form_tag("/search", method: "get") do %>
+          <div class="navigation-search-box">
             <%= text_field_tag :q, nil, class: 'search-field' %>
             <%= submit_tag("Search") %>
-          <% end %>
-        </div>
+          </div>
+          <div class="navigation-option">
+            <%= link_to 'New', new_article_path %>
+          </div>
+
+          <div class="navigation-option">
+            <%= link_to 'List All', articles_path %>
+          </div>
+
+        <% end %>
 
       </div>
       <!-- End Naviagtion -->
@@ -37,12 +45,6 @@
 
       </div>
       <!-- End Content -->
-
-      <!-- Begin Footer -->
-      <div id="footer">
-
-      </div>
-      <!-- End Footer -->
 
     </div>
     <!-- End Wrapper -->

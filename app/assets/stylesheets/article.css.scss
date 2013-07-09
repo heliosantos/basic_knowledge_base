@@ -18,3 +18,31 @@
 .form_article_body_input {
   width: 800px;
 }
+
+.article {
+  background: #eeeeee;
+  margin-left: -9px;
+  margin-right: -11px;
+  border: 1px solid #ddd;
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 5px 10px 5px 10px;
+  font-size: 20px;
+}
+
+.article-title {
+  display: inline;
+
+}
+
+.article-edit {
+  display: inline;  
+  float: right;
+  
+  a {
+    text-decoration: none;
+    color: #533;
+    font-size: 16px;
+  }
+
+}

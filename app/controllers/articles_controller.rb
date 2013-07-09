@@ -1,6 +1,15 @@
 class ArticlesController < ApplicationController
 
   # TODO: escape html on create and edit
+
+  def welcome
+    @articles = [].each
+
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @articles }
+    end
+  end
   
   def search
     @articles = Article.full_text_search(params[:q], match: :all).map! do |article|
@@ -9,15 +18,12 @@ class ArticlesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render 'index' }
       format.json { render json: @articles }
     end
 
   end
 
-
-  # GET /articles
-  # GET /articles.json
   def index
     @articles = Article.each
 
@@ -27,20 +33,6 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/1
-  # GET /articles/1.json
-  def show
-    @article = Article.find(params[:id])
-    @article.body =  BlueCloth.new(@article.body).to_html
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @article }
-    end
-  end
-
-  # GET /articles/new
-  # GET /articles/new.json
   def new
     @article = Article.new
 
@@ -50,19 +42,16 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # GET /articles/1/edit
   def edit
     @article = Article.find(params[:id])
   end
 
-  # POST /articles
-  # POST /articles.json
   def create
     @article = Article.new(params[:article])
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to action: 'welcome', notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
         format.html { render action: "new" }
@@ -71,14 +60,12 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # PUT /articles/1
-  # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to action: 'welcome', notice: 'Article was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -87,14 +74,12 @@ class ArticlesController < ApplicationController
     end
   end
 
-  # DELETE /articles/1
-  # DELETE /articles/1.json
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to articles_url }
+      format.html { redirect_to action: 'welcome' }
       format.json { head :no_content }
     end
   end
