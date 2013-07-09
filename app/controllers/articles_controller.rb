@@ -2,7 +2,14 @@ class ArticlesController < ApplicationController
 
   def search
     @articles = Article.full_text_search(params[:q], match: :all)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @articles }
+    end
+
   end
+
 
   # GET /articles
   # GET /articles.json

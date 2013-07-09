@@ -1,7 +1,5 @@
 /*
     
-
-    
     Original version by Keith Donegan of Code-Sucks.com
     
     E-Mail: Keithdonegan@gmail.com
@@ -11,11 +9,6 @@
     back to http://www.code-sucks.com
     
 */
-
-$header_background: #333333;
-$navigation_background: #999999;
-$footer_background: #999999;
-$content_background: #eeeeee;
 
 * { padding: 0; margin: 0; }
 
@@ -34,7 +27,7 @@ body {
  border: 1px solid #ccc;
  height: 20px;
  margin: 10px 0px 5px 0px;
- background: $header_background;
+ background: #333;
 
  text-align: center;
  font-size: 20px;
@@ -46,13 +39,13 @@ body {
  padding: 10px;
  border: 1px solid #ccc;
  margin: 0px 0px 5px 0px;
- background: $navigation_background;
+ background: #999;
 }
 #content { 
  width: 900px;
  color: #333;
- border: 1px solid #ccc;
- background: $content_background;
+ border: 0px solid #ccc;
+ background: #fff;
  margin: 0px 0px 5px 0px;
  padding: 10px;
  height: 350px;
@@ -60,8 +53,8 @@ body {
 #footer { 
  width: 900px;
  color: #333;
- border: 1px solid #ccc;
- background: $footer_background;
+ border: 1px solid #fff;
+ background: #fff;
  margin: 0px 0px 10px 0px;
  padding: 10px;
 }
