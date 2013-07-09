@@ -1,3 +1,20 @@
 // Place all the styles related to the Article controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form_article_title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form_article_body {
+  margin-bottom: 10px;
+}
+
+.form_article_title_input {
+  width: 800px;
+}
+
+.form_article_body_input {
+  width: 800px;
+}

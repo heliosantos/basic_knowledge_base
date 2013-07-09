@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="field form_article_title">
+    <%= f.text_field :title, placeholder: 'Title', :class => 'form_article_title_input' %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
+  <div class="field form_article_body">
+    <%= f.text_area :body, placeholder: 'Write your article here. You can use markdown.', :class => 'form_article_body_input' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save' %>
   </div>
 <% end %>
