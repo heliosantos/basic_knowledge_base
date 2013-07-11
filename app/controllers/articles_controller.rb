@@ -95,4 +95,43 @@ class ArticlesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_import
+
+  end
+
+  def import
+    jsoned_articles = JSON.parse(params[:jsoned_articles])
+    valid_articles = [] 
+    @invalid_articles = [] 
+
+    jsoned_articles.each_with_index do |article, index|
+      article = Article.new(article)
+
+      if article.valid?
+        valid_articles << article
+      else
+        article.instance_variable_set(:@index, index)
+        @invalid_articles << article
+
+      end
+    end
+
+    respond_to do |format|
+
+      if @invalid_articles.empty?
+        valid_articles.each do |article|
+          article.save
+        end
+
+        format.html { 
+          flash[:notice] = "#{valid_articles.count} article were successfully created."
+          redirect_to action: 'welcome'
+        }
+
+      else
+        format.html { render action: "new_import" }
+      end
+    end
+  end
 end

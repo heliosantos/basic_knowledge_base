@@ -8,6 +8,9 @@ Bkb::Application.routes.draw do
   match 'search' => 'articles#search', :as => :search
   match 'articles/:permalink/edit' => 'articles#edit', :as => :edit_article
   
+  get 'articles/import' => 'articles#new_import', :as => :import_articles
+  post 'articles/import' => 'articles#import'
+
   resources :articles
   
   root :to => 'articles#welcome'

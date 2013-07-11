@@ -1,0 +1,19 @@
+<%= form_tag action: "import", method: "post" do %>
+  
+  <% @invalid_articles.each do |article|%>
+    <% if article.errors.any? %>
+      <div class="notifications">
+        <% article.errors.full_messages.each do |message| %>
+          <div class=<%= "message-error" %>><%= "##{article.instance_variable_get(:@index)} - #{message}" %></div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div>
+    <%= text_area_tag :jsoned_articles, nil, :placeholder => 'Json array with articles.', :class => "import_text_area" %>
+  </div>
+  <div>
+    <%= submit_tag("Import") %>
+  </div>
+<% end %>
