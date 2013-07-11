@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
   
   def search
     @articles = Article.full_text_search(params[:q], match: :all).map do |article|
-      article.body = BlueCloth.new(article.body).to_html
+      article.body = BlueCloth.new(CGI::escapeHTML article.body).to_html
       article
     end
 
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.each.map do |article|
-      article.body = BlueCloth.new(article.body).to_html
+      article.body = BlueCloth.new(CGI::escapeHTML article.body).to_html
       article
     end
 
