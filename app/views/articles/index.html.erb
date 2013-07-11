@@ -3,7 +3,7 @@
 
 <%= javascript_tag do %>
   <% @articles.each do |article| %>
-    add_article(<%= article.to_json.html_safe %>, <%= logged_in? ? "'#{edit_article_path(article)}'".html_safe : "null" %>);
+    add_article(<%= article.to_json.html_safe %>, <%= logged_in? ? "'#{edit_article_path(:permalink => article.permalink, :asdf => 'wse')}'".html_safe : "null" %>);
   <% end %>
 <% end %>
 

@@ -5,8 +5,10 @@ Bkb::Application.routes.draw do
   match 'login' => 'user_sessions#new', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
 
-  resources :articles
   match 'search' => 'articles#search', :as => :search
+  match 'articles/:permalink/edit' => 'articles#edit', :as => :edit_article
+  
+  resources :articles
   
   root :to => 'articles#welcome'
 

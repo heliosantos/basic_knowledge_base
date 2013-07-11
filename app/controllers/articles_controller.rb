@@ -46,7 +46,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    puts '----------------------'
+    puts params
+    @article = Article.find_by(permalink: params[:permalink])
+    puts @article
   end
 
   def create
