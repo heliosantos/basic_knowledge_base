@@ -1,0 +1,17 @@
+<%= form_for @user, :url => {:controller => 'user_sessions', :action => 'create'} do |f| %>
+  
+  <div class="login-form"> 
+    <div> 
+      <%= f.text_field :email, :placeholder => 'Email', :class => 'login-form-email-field' %>
+    </div>
+    
+    <div>
+      <%= f.password_field :password, :placeholder => 'Password', :class => 'login-form-password-field' %>
+    </div>
+    
+    <div>
+      <%= f.submit 'Login' %>
+    </div>
+  </div>
+
+<% end %>

@@ -1,0 +1,28 @@
+#navigation {
+ width: 900px;
+ color: #333;
+ padding: 10px;
+ border: 1px solid #ccc;
+ margin: 0px 0px 5px 0px;
+ background: #999;
+}
+
+.navigation-search-box {
+  display: inline;
+  margin-left: 100px;
+  .search-field {
+    width: 450px;
+  }
+
+}
+
+.navigation-option {
+  display: inline;
+  float: right;
+  margin-left: 20px;
+  a {
+    text-decoration: none;
+    color: #533;
+    font-size: 16px;
+  }
+}

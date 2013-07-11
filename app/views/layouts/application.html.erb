@@ -19,27 +19,19 @@
       <!-- End Header -->
 
       <!-- Begin Naviagtion -->
-      <div id="navigation">
-        <%= form_tag("/search", method: "get") do %>
-          <div class="navigation-search-box">
-            <%= text_field_tag :q, nil, class: 'search-field' %>
-            <%= submit_tag("Search") %>
-          </div>
-          <div class="navigation-option">
-            <%= link_to 'New', new_article_path %>
-          </div>
-
-          <div class="navigation-option">
-            <%= link_to 'List All', articles_path %>
-          </div>
-
-        <% end %>
-
-      </div>
+      <%= render '/layouts/navigation' %>
       <!-- End Naviagtion -->
 
       <!-- Begin Content -->
       <div id="content">
+
+        <% if flash.each.count > 0 %>
+        <div class="notifications">
+          <% flash.each do |type, message| %>
+            <div class=<%= "message-#{type}" %>><%= message %></div>
+          <% end %>
+        </div>
+        <% end %>
 
         <%= yield %>
 

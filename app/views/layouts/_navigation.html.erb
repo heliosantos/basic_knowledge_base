@@ -1,0 +1,30 @@
+<div id="navigation">
+  <%= form_tag("/search", method: "get") do %>
+    <div class="navigation-search-box">
+      <%= text_field_tag :q, nil, class: 'search-field' %>
+      <%= submit_tag("Search") %>
+    </div>
+    
+    <% if logged_in? %>
+      <div class="navigation-option">
+        <%= link_to 'Logout', logout_path %>
+      </div>
+
+      <div class="navigation-option">
+        <%= link_to 'New', new_article_path %>
+      </div>
+
+    <% else %>
+
+      <div class="navigation-option">
+        <%= link_to 'Login', login_path %>
+      </div>
+    
+    <% end %>
+
+    <div class="navigation-option">
+      <%= link_to 'List All', articles_path %>
+    </div>
+
+  <% end %>
+</div>

@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
 
+  skip_before_filter :require_login, :except => [:new, :edit, :create, :update, :destroy]
+
   # TODO: escape html on create and edit
 
   def welcome
-    @articles = [].each
 
+    @articles = [].each
     respond_to do |format|
       format.html { render 'index' }
       format.json { render json: @articles }
@@ -54,7 +56,10 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to action: 'welcome', notice: 'Article was successfully created.' }
+        format.html { 
+          flash[:notice] = 'Article was successfully created.'
+          redirect_to action: 'welcome'
+        }
         format.json { render json: @article, status: :created, location: @article }
       else
         format.html { render action: "new" }
@@ -68,7 +73,10 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to action: 'welcome', notice: 'Article was successfully updated.' }
+        format.html { 
+          flash[:notice] = 'Article was successfully updated.'
+          redirect_to action: 'welcome'
+        }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,7 +90,10 @@ class ArticlesController < ApplicationController
     @article.destroy
 
     respond_to do |format|
-      format.html { redirect_to action: 'welcome' }
+      format.html { 
+        flash[:notice] = 'Article was successfully deleted.'
+        redirect_to action: 'welcome' 
+      }
       format.json { head :no_content }
     end
   end
