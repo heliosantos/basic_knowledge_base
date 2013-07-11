@@ -32,7 +32,7 @@ common: &default_settings
   #       - Ajax Service
   #       - All Services
   # 
-  app_name: <%= ENV["basic-knowledge-base"] %>
+  app_name: <%= ENV["NEW_RELIC_APP_NAME"] %>
 
   # When "true", the agent collects performance data about your 
   # application and reports this data to the New Relic service at 
@@ -42,7 +42,7 @@ common: &default_settings
 
   # Developer mode should be off in every environment but
   # development as it has very high overhead in memory.
-  developer_mode: true
+  developer_mode: false
 
   # The newrelic agent generates its own log file to keep its logging
   # information separate from that of your application.  Specify its

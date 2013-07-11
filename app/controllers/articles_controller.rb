@@ -2,8 +2,6 @@ class ArticlesController < ApplicationController
 
   skip_before_filter :require_login, :except => [:new, :edit, :create, :update, :destroy]
 
-  # TODO: escape html on create and edit
-
   def welcome
 
     @articles = [].each
