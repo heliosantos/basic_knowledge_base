@@ -6,6 +6,8 @@ class Article
   field :body, type: String
   field :permalink, type: String
 
+  validates_presence_of :title, :body
+
   before_create :set_slug_as_id
 
   private 
