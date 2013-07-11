@@ -10,6 +10,9 @@ gem "bluecloth", "~> 2.2.0"
 
 gem "sorcery", "~> 0.8.2"
 
+# for monitoring
+gem 'newrelic_rpm'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
