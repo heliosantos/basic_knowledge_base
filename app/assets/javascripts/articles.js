@@ -20,10 +20,12 @@ function add_article(article, edit_link) {
 
   articles_keeper['add'](article);
 
+  edit_href = edit_link === null ? '' : '<a href="' + edit_link + '">Edit</a>'; 
+
   append_to.after(
     '<div class="article">\
       <div class="article-title" onclick="show_details_dialog(\'' + article['_id'] + '\');">' + article['title'] + '</div>\
-      <div class="article-edit"><a href="' + edit_link + '">Edit</a></div>' +  
+      <div class="article-edit">' + edit_href + '</div>' +  
     '</div>');
 }
 
