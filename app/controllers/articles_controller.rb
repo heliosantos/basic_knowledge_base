@@ -101,7 +101,18 @@ class ArticlesController < ApplicationController
   end
 
   def import
-    jsoned_articles = JSON.parse(params[:jsoned_articles])
+    begin
+      jsoned_articles = JSON.parse(params[:jsoned_articles])
+    rescue
+      respond_to do |format|
+        format.html { 
+          flash.now[:error] = 'Not valid Json'
+          render action: "new_import" 
+        }
+      end
+      return
+    end
+
     valid_articles = [] 
     @invalid_articles = [] 
 
@@ -133,5 +144,6 @@ class ArticlesController < ApplicationController
         format.html { render action: "new_import" }
       end
     end
+
   end
 end
