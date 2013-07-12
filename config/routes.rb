@@ -2,11 +2,11 @@ Bkb::Application.routes.draw do
 
   resources :user_sessions
   
-  match 'login' => 'user_sessions#new', :as => :login
-  match 'logout' => 'user_sessions#destroy', :as => :logout
+  get 'login' => 'user_sessions#new', :as => :login
+  delete 'logout' => 'user_sessions#destroy', :as => :logout
 
-  match 'search' => 'articles#search', :as => :search
-  match 'articles/:permalink/edit' => 'articles#edit', :as => :edit_article
+  get 'search' => 'articles#search', :as => :search
+  get 'articles/:permalink/edit' => 'articles#edit', :as => :edit_article
   
   get 'articles/import' => 'articles#new_import', :as => :import_articles
   post 'articles/import' => 'articles#import'

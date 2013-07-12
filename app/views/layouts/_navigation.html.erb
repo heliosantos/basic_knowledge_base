@@ -7,7 +7,7 @@
     
     <% if logged_in? %>
       <div class="navigation-option">
-        <%= link_to 'Logout', logout_path %>
+        <%= link_to 'Logout', logout_path, method: :delete %>
       </div>
 
       <div class="navigation-option">
