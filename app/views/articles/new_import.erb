@@ -1,13 +1,15 @@
 <%= form_tag action: "import", method: "post" do %>
   
-  <% @invalid_articles.each do |article|%>
-    <% if article.errors.any? %>
-      <div class="notifications">
-        <% article.errors.full_messages.each do |message| %>
-          <div class=<%= "message-error" %>><%= "##{article.instance_variable_get(:@index)} - #{message}" %></div>
-        <% end %>
-      </div>
-    <% end %>
+  <% if @invalid_articles.present? and @invalid_articles.count > 0 %>
+	  <% @invalid_articles.each do |article|%>
+		<% if article.errors.any? %>
+		  <div class="notifications">
+			<% article.errors.full_messages.each do |message| %>
+			  <div class=<%= "message-error" %>><%= "##{article.instance_variable_get(:@index)} - #{message}" %></div>
+			<% end %>
+		  </div>
+		<% end %>
+	  <% end %>
   <% end %>
 
   <div>
