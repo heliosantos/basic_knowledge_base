@@ -12,27 +12,33 @@ class ArticlesController < ApplicationController
   end
   
   def search
-    @articles = Article.full_text_search(params[:q], match: :all).map do |article|
-      article.body = BlueCloth.new(CGI::escapeHTML article.body).to_html
-      article
-    end
-
     respond_to do |format|
-      format.html { render 'index' }
-      format.json { render json: @articles }
+      format.html do
+        @articles = Article.full_text_search(params[:q], match: :all).map do |article|
+          article.body = BlueCloth.new(CGI::escapeHTML article.body).to_html
+          article
+        end
+        render 'index'
+      end
+      format.json do 
+        @articles = Article.each
+        render json: @articles 
+      end
     end
-
   end
 
   def index
-    @articles = Article.each.map do |article|
-      article.body = BlueCloth.new(CGI::escapeHTML article.body).to_html
-      article
-    end
-
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @articles }
+      format.html do
+        @articles = Article.each.map do |article|
+          article.body = BlueCloth.new(CGI::escapeHTML article.body).to_html
+          article
+        end
+      end
+      format.json do 
+        @articles = Article.each
+        render json: @articles 
+      end
     end
   end
 
@@ -101,7 +107,18 @@ class ArticlesController < ApplicationController
   end
 
   def import
-    jsoned_articles = JSON.parse(params[:jsoned_articles])
+    begin
+      jsoned_articles = JSON.parse(params[:jsoned_articles])
+    rescue
+      respond_to do |format|
+        format.html { 
+          flash.now[:error] = 'Not valid Json'
+          render action: "new_import" 
+        }
+      end
+      return
+    end
+
     valid_articles = [] 
     @invalid_articles = [] 
 
@@ -133,5 +150,6 @@ class ArticlesController < ApplicationController
         format.html { render action: "new_import" }
       end
     end
+
   end
 end
