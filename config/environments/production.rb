@@ -9,9 +9,11 @@ Bkb::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  #TODO: can be set to false when using heroku or a http server like appache or Nginx
-  config.serve_static_assets = true
-
+  
+  
+  # Can be set to false when using heroku or a http server like appache or Nginx
+  config.serve_static_assets = ENV['HEROKU_SERVER'].nil?
+  
   # Compress JavaScripts and CSS
   config.assets.compress = true
 

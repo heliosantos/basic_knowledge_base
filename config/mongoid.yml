@@ -80,9 +80,23 @@ test:
         retry_interval: 0
 
 
+<% if not ENV['HEROKU_SERVER'].nil? %>
+        
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
+      options:
+        skip_version_check: true
+        safe: true
+        
+<% else %>
+        
 production:
   sessions:
     default:
       database: bkb_production
       hosts:
         - localhost:27017
+        
+<% end %>
