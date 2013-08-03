@@ -5,4 +5,4 @@
 
 The following variable must be defined when running the app in heroku
 
-    heroku config:set export HEROKU_SERVER=true
+    heroku config:set HEROKU_SERVER=true
