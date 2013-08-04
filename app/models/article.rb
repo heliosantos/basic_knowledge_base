@@ -14,18 +14,18 @@ class Article
     self.permalink = self.title.to_slug
     super
     log = CrudLogger.new(permalink: self.permalink, updated: true, deleted: false)
-    log.upsert    
+    log.save    
   end
   
   def update_attributes(attributes = [])
     super(attributes)
     log = CrudLogger.new(permalink: self.permalink, updated: true, deleted: false)
-    log.upsert
+    log.save
   end
   
   def destroy
     log = CrudLogger.new(permalink: self.permalink, updated: false, deleted: true)
-    log.upsert     
+    log.save     
     super    
   end
   

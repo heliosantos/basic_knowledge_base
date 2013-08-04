@@ -3,8 +3,8 @@ class CrudLogger
   include Mongoid::Timestamps
 
   field :permalink, type: String
-  field :updated, type: Boolean
-  field :deleted, type: Boolean
+  field :was_updated, type: Boolean
+  field :was_deleted, type: Boolean
   field :_id, type: String, default: ->{ permalink }
 
   validates_presence_of :permalink
