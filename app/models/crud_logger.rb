@@ -1,5 +1,6 @@
 class CrudLogger
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :permalink, type: String
   field :updated, type: Boolean
