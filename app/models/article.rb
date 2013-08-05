@@ -10,20 +10,27 @@ class Article
   validates_presence_of :title, :body
 
   
-  def save
+  def save    
     self.permalink = self.title.to_slug
     super
-    CrudLogger.log_operation(self._id, self.permalink, 'created')
+    CrudLogger.log_operation(self.permalink, self.permalink, 'created')
   end
   
   def update_attributes(attributes = [])
+    a = Article.find(self.id)
+    old_permalink = ''
+    
+    if !a.nil?
+      old_permalink = a.permalink
+    end
+    
     super(attributes)
-    CrudLogger.log_operation(self._id, self.permalink, 'updated')
+    CrudLogger.log_operation(self.permalink, old_permalink, 'updated')
   end
   
   def destroy
     super    
-    CrudLogger.log_operation(self._id, self.permalink, 'deleted')
+    CrudLogger.log_operation(self.permalink, self.permalink, 'deleted')
   end
   
   search_in :title, :body

@@ -4,19 +4,19 @@ class CrudLogger
   
   field :permalink, type: String
   field :operation, type: String
-  field :article_id, type: Moped::BSON::ObjectId
   
   validates_inclusion_of :operation, allow_blank: false, in: ['created', 'updated', 'deleted'] 
   
-  def self.log_operation(article_id, permalink, operation)
-    log = CrudLogger.find_or_initialize_by(article_id: article_id)
+  def self.log_operation(permalink, old_permalink, operation)
+    log = CrudLogger.find_or_initialize_by(permalink: permalink)
     
     # the former permalink is to be deleted
-    if not log.permalink.nil? and log.permalink != permalink
-      CrudLogger.new(permalink: log.permalink, operation: 'deleted').save
+    if permalink != old_permalink
+      deletation_log = CrudLogger.find_or_initialize_by(permalink: old_permalink)
+      deletation_log.operation = 'deleted'
+      deletation_log.save
     end
     
-    log.permalink = permalink 
     log.operation = operation
     log.save
   end
