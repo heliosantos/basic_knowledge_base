@@ -77,7 +77,9 @@ module Bkb
         false
       end
     end
-
+    
+    Rails.application.config.assets.precompile += ['pygments.css']
+    
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
