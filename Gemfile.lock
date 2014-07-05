@@ -83,6 +83,11 @@ GEM
       rack (~> 1.2)
     origin (1.1.0)
     polyglot (0.3.3)
+    posix-spawn (0.3.8)
+    pygmentize (0.0.3)
+    pygments.rb (0.6.0)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.1.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -108,6 +113,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (3.1.2)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -132,6 +138,7 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -144,7 +151,10 @@ DEPENDENCIES
   mongoid (~> 3.1.4)
   mongoid_search (~> 0.3.2)
   newrelic_rpm
+  pygmentize (~> 0.0.3)
+  pygments.rb (~> 0.6.0)
   rails (= 3.2.13)
+  redcarpet (~> 3.1.2)
   sass-rails (~> 3.2.3)
   sorcery (~> 0.8.2)
   to_slug (~> 1.0.8)

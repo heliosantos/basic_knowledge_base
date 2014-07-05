@@ -1,10 +1,13 @@
 var articles_keeper = function ( ) {
+  // an array to keep articles
   var articles = {};
-
+  
+  // add article to articles array
   var add = function ( article ) {
     articles[article['_id']] = article;
   }
-
+  
+  // get article from articles array
   var get = function ( permalink ) {
     return articles[permalink];
   }
