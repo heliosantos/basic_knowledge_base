@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  include HtmlWithPygments
   skip_before_filter :require_login, :except => [:new, :edit, :create, :update, :destroy]
 
   def welcome
@@ -15,7 +14,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html do
         @articles = Article.full_text_search(params[:q], match: :all).map do |article|
-          article.body = markdown(article.body)
+          article.body = article.body
           article
         end
         render 'index'
@@ -31,7 +30,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html do
         @articles = Article.each.map do |article|
-          article.body = markdown(article.body)
+          article.body = article.body
           article
         end
       end

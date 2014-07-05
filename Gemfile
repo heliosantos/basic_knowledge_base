@@ -11,9 +11,6 @@ gem "bluecloth", "~> 2.2.0"
 
 gem "sorcery", "~> 0.8.2"
 
-gem 'redcarpet', '~> 3.1.2'
-gem 'pygments.rb', '~> 0.6.0'
-  gem 'pygmentize', '~> 0.0.3'
 
 # for monitoring
 gem 'newrelic_rpm'
