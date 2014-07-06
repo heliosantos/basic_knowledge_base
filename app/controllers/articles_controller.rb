@@ -54,6 +54,12 @@ class ArticlesController < ApplicationController
     @article = Article.find_by(permalink: params[:permalink])
   end
 
+  def show
+    @article = Article.find_by(permalink: params[:permalink])
+    
+    @article.body = "# " + @article.title + "\n" + @article.body
+  end
+  
   def create
     @article = Article.new(params[:article])
 

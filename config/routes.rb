@@ -6,7 +6,9 @@ Bkb::Application.routes.draw do
   delete 'logout' => 'user_sessions#destroy', :as => :logout
 
   get 'search' => 'articles#search', :as => :search
+  get 'articles/new' => 'articles#new', :as => :new_article
   get 'articles/:permalink/edit' => 'articles#edit', :as => :edit_article
+  get 'articles/:permalink' => 'articles#show', :as => :show_article
   
   get 'articles/import' => 'articles#new_import', :as => :import_articles
   post 'articles/import' => 'articles#import'
