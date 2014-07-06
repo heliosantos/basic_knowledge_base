@@ -11,6 +11,7 @@ gem "bluecloth", "~> 2.2.0"
 
 gem "sorcery", "~> 0.8.2"
 
+gem 'epic-editor-rails', '~> 0.2.3'
 
 # for monitoring
 gem 'newrelic_rpm'

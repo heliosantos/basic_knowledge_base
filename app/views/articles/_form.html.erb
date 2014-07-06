@@ -10,10 +10,21 @@
   <div class="field form_article_title">
     <%= f.text_field :title, placeholder: 'Title', :class => 'form_article_title_input' %>
   </div>
-  <div class="field form_article_body">
-    <%= f.text_area :body, placeholder: 'Write your article here. You can use markdown.', :class => 'form_article_body_input' %>
-  </div>
+  <div id="epiceditor", style="height: 400px;"></div>
+  <%= f.text_area :body, placeholder: 'Write your article here. You can use markdown.', :id => 'epiceditor-textarea', :style => 'display: none;'%>
+  
+  
   <div class="actions">
-    <%= f.submit 'Save' %>
+    <%= f.submit 'Save', id: 'save-button' %>
   </div>
+  
+  
 <% end %>
+
+
+<script type="text/javascript">
+//<![CDATA[
+  start_editor();
+
+//]]>
+</script>
