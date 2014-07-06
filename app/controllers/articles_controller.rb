@@ -14,7 +14,8 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html do
         @articles = Article.full_text_search(params[:q], match: :all).map do |article|
-          article.body = article.body
+          article._keywords = []
+          article.body = nil
           article
         end
         render 'index'
@@ -30,7 +31,8 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html do
         @articles = Article.each.map do |article|
-          article.body = article.body
+          article._keywords = []
+          article.body = nil
           article
         end
       end

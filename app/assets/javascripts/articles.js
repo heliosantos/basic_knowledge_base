@@ -15,7 +15,7 @@ var articles_keeper = function ( ) {
   return {'add': add, 'get': get};
 }();
 
-function add_article(article, edit_link) {
+function add_article(article, show_link, edit_link) {
   var append_to = $('#articles');
   if( $(".article").length > 0 ) {
     append_to = $(".article:last");
@@ -26,19 +26,34 @@ function add_article(article, edit_link) {
   edit_href = edit_link === null ? '' : '<a href="' + edit_link + '">Edit</a>'; 
 
   append_to.after(
-    '<div class="article">\
-      <div class="article-title" onclick="show_details_dialog(\'' + article['_id'] + '\');">' + article['title'] + '</div>\
+    '<div class="article" onclick="window.location = \'' + show_link + '\';" >\
+      <div class="article-title">' + article['title'] + '</div>\
       <div class="article-edit">' + edit_href + '</div>' +  
     '</div>');
 }
 
-
-function show_details_dialog(permalink) {
-
-  var article = articles_keeper['get'](permalink);
-
-  $('#details-dialog').html(article['body']);
-  $('#details-dialog').dialog({width: 800, draggable: false, minHeight: 600, title: article['title']});
-
+function start_epiceditor_edit_mode() {
+    var opts = {
+    textarea: 'epiceditor-textarea',
+    clientSideStorage: false,
+    button: {
+      preview: true,
+      fullscreen: true,
+      bar: true
+    }
+  }
+  var editor = new EpicEditor(opts).load();
 }
 
+function start_epiceditor_preview_mode() {
+    var opts = {
+    textarea: 'epiceditor-textarea',
+    clientSideStorage: false,
+    button: {
+      bar: false
+    },
+    autogrow: true
+  }
+  var editor = new EpicEditor(opts).load();
+  editor.preview();
+}
